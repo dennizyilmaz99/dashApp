@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "58400222265",
+    "project_id": "dashapp-734be",
+    "storage_bucket": "dashapp-734be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58400222265:android:83576b6a03668889eeb1e8",
+        "android_client_info": {
+          "package_name": "com.denniz.dashApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58400222265-67p34crtmh25vlqjon75tmtidrb5rkej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.denniz.dashApp",
+            "certificate_hash": "5dc7ebb15223d835cb97720b2d930d64a0a0db09"
+          }
+        },
+        {
+          "client_id": "58400222265-32j1p5j616av4qa1ggi0h47168lb1l4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-yIXV_VgDSUx0zZD3rqQUZu1du5LLO_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58400222265-32j1p5j616av4qa1ggi0h47168lb1l4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58400222265:android:67eee8d135932bf1eeb1e8",
+        "android_client_info": {
+          "package_name": "com.denniz.dashapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58400222265-32j1p5j616av4qa1ggi0h47168lb1l4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-yIXV_VgDSUx0zZD3rqQUZu1du5LLO_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58400222265-32j1p5j616av4qa1ggi0h47168lb1l4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
