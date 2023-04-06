@@ -1,11 +1,8 @@
 package com.denniz.dashapp
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,12 +13,11 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 
 
-class getStartedFrag : Fragment() {
+class GetStartedFrag : Fragment() {
 
 
     private lateinit var auth: FirebaseAuth
@@ -30,13 +26,12 @@ class getStartedFrag : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_get_started, container, false)
-        val signUpBtn = view.findViewById<Button>(R.id.signUpBtn)
-        val editTextEmail = view.findViewById<EditText>(R.id.editTextEmail)
+        val signUpBtn = view.findViewById<Button>(R.id.submitBtn)
+        val editTextEmail = view.findViewById<EditText>(R.id.editTextName)
         val editTextPassword = view.findViewById<EditText>(R.id.editTextPassword)
         val editTextConfirmPassword = view.findViewById<EditText>(R.id.editTextConfirmPassword)
-        val textInputLayoutEmail = view.findViewById<TextInputLayout>(R.id.textInputLayoutEmail)
+        val textInputLayoutEmail = view.findViewById<TextInputLayout>(R.id.textInputLayoutName)
         val textInputLayoutPassword = view.findViewById<TextInputLayout>(R.id.textInputLayoutPassword)
         val textInputLayoutConfirmPassword = view.findViewById<TextInputLayout>(R.id.textInputLayoutConfirmPassword)
         auth = FirebaseAuth.getInstance()
@@ -50,7 +45,7 @@ class getStartedFrag : Fragment() {
                 if (password == confirmPassword){
                     auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
                         if(it.isSuccessful){
-                            Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_dashboardFrag)
+                            Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_getToKnowFrag)
                         } else {
                             Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
@@ -80,6 +75,10 @@ class getStartedFrag : Fragment() {
 
         view.findViewById<ImageButton>(R.id.backBtnSignUp).setOnClickListener() {
             Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_homeFrag)
+        }
+
+        view.findViewById<Button>(R.id.button2).setOnClickListener() {
+            Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_getToKnowFrag)
         }
 
         return view

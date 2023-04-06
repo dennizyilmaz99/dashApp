@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/getStartedFrag"
-        android:name="com.denniz.dashapp.getStartedFrag"
+        android:name="com.denniz.dashapp.GetStartedFrag"
         android:label="fragment_get_started"
         tools:layout="@layout/fragment_get_started" >
         <action
@@ -26,7 +26,22 @@
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right" />
         <action
-            android:id="@+id/action_getStartedFrag_to_dashboardFrag"
+            android:id="@+id/action_getStartedFrag_to_getToKnowFrag"
+            app:destination="@id/getToKnowFrag"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/getToKnowFrag"
+        android:name="com.denniz.dashapp.GetToKnowFrag"
+        android:label="GetToKnowFrag" >
+        <action
+            android:id="@+id/action_getToKnowFrag_to_getStartedFrag"
+            app:destination="@id/getStartedFrag"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_getToKnowFrag_to_dashboardFrag"
             app:destination="@id/dashboardFrag"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left" />
