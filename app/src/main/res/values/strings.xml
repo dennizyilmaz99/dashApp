@@ -6,4 +6,6 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="name">Name</string>
+    <string name="save" />
+    <string name="empty_task_error" />
 </resources>

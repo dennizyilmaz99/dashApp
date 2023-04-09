@@ -37,7 +37,20 @@
             app:layout_constraintVertical_bias="0.176" />
 
         <View
-            android:id="@+id/view2"
+            android:id="@+id/view4"
+            android:layout_width="326dp"
+            android:layout_height="167dp"
+            android:background="@drawable/rounded"
+            android:elevation="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.702" />
+
+        <View
+            android:id="@+id/taskViewButton"
             android:layout_width="326dp"
             android:layout_height="89dp"
             android:background="@drawable/rounded"
@@ -47,7 +60,7 @@
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.439" />
+            app:layout_constraintVertical_bias="0.445" />
 
         <TextView
             android:id="@+id/textView6"
@@ -55,7 +68,7 @@
             android:layout_height="wrap_content"
             android:elevation="30dp"
             android:fontFamily="@font/urbanist_bold"
-            android:text="Hello Denniz"
+            android:text="Hello, Denniz"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,10 +83,58 @@
             android:layout_height="wrap_content"
             android:elevation="30dp"
             android:fontFamily="sans-serif-medium"
-            android:text="16"
+            android:text="16°"
             android:textSize="40sp"
-            tools:layout_editor_absoluteX="60dp"
-            tools:layout_editor_absoluteY="202dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.175"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.278" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="30dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Stockholm"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.455"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.289" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="30dp"
+            android:fontFamily="@font/urbanist_extrabold"
+            android:text="Your Tasks"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.435" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="30dp"
+            android:text="Here can you add and remove tasks for your day!"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.344"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.474" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -50,5 +50,22 @@
         android:id="@+id/dashboardFrag"
         android:name="com.denniz.dashapp.DashboardFrag"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFrag_to_todoListFrag"
+            app:destination="@id/todoListFrag"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoListFrag"
+        android:name="com.denniz.dashapp.TodoListFrag"
+        android:label="fragment_todo_list"
+        tools:layout="@layout/fragment_todo_list" >
+        <action
+            android:id="@+id/action_todoListFrag_to_dashboardFrag2"
+            app:destination="@id/dashboardFrag"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
+    </fragment>
 </navigation>
