@@ -12,12 +12,13 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputLayout
 
 class GetToKnowFrag : Fragment() {
 
-
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +47,7 @@ class GetToKnowFrag : Fragment() {
             textInputLayoutName.setBoxStrokeColorStateList(colorStateList)
                 Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
             } else {
+                sharedViewModel.sharedData = editTextName.text.toString()
             Navigation.findNavController(view).navigate(R.id.action_getToKnowFrag_to_dashboardFrag)
             }
         }

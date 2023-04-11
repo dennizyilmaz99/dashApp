@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class TodoListFrag : Fragment() {
 
@@ -19,7 +23,6 @@ class TodoListFrag : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_todo_list, container, false)
-
         view.findViewById<ImageButton>(R.id.backBtnTodoList).setOnClickListener(){
             Navigation.findNavController(view).navigate(R.id.action_todoListFrag_to_dashboardFrag2)
         }
