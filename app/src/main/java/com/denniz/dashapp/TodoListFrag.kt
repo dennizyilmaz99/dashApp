@@ -6,27 +6,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.denniz.dashapp.databinding.FragmentTodoListBinding
 
 class TodoListFrag : Fragment() {
-
-
-    @SuppressLint("MissingInflatedId")
+    private lateinit var binding: FragmentTodoListBinding
+    @SuppressLint("MissingInflatedId", "FragmentLiveDataObserve")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_todo_list, container, false)
-        view.findViewById<ImageButton>(R.id.backBtnTodoList).setOnClickListener(){
-            Navigation.findNavController(view).navigate(R.id.action_todoListFrag_to_dashboardFrag2)
+        binding = FragmentTodoListBinding.inflate(inflater, container, false)
+        binding.newTaskBtn.setOnClickListener() {
+            NewTaskSheet().show(parentFragmentManager, "newTaskTag")
+        }
+        binding.backBtnTasks.setOnClickListener(){
+            Navigation.findNavController(binding.root).navigate(R.id.action_todoListFrag_to_dashboardFrag)
         }
 
-        return view
+        return binding.root
     }
 }
+
+
+

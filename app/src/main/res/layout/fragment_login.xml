@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetStartedFrag">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".LoginFrag">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,9 +27,10 @@
         <View
             android:id="@+id/view3"
             android:layout_width="326dp"
-            android:layout_height="381dp"
+            android:layout_height="351dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/rounded"
             android:elevation="30dp"
             app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
@@ -47,13 +46,14 @@
             android:layout_height="wrap_content"
             android:elevation="30dp"
             android:fontFamily="@font/urbanist_extrabold"
-            android:text="Sign up"
+            android:text="Log in"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.252" />
+            app:layout_constraintVertical_bias="0.267" />
 
         <Button
             android:id="@+id/loginBtn"
@@ -63,13 +63,13 @@
             android:elevation="30dp"
             android:fontFamily="@font/urbanist_extrabold"
             android:stateListAnimator="@null"
-            android:text="sign up"
+            android:text="log in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.618" />
+            app:layout_constraintVertical_bias="0.575" />
 
         <ImageButton
             android:id="@+id/backBtnLogin"
@@ -86,33 +86,35 @@
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="30dp"
             android:id="@+id/textInputLoginEmail"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="220dp"
             android:elevation="30dp"
+            android:hint="@string/email"
             android:paddingTop="30dp"
             android:paddingBottom="30dp"
-            android:hint="@string/email"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailSignup"
+                android:id="@+id/emailLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                tools:ignore="TouchTargetSizeCheck"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"/>
+                android:paddingBottom="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                tools:ignore="TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLoginPassword"
+            android:layout_marginTop="30dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -126,7 +128,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/passwordSignup"
+                android:id="@+id/passwordLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
@@ -134,32 +136,6 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutConfirmPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:elevation="30dp"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/confirm_password"
-                android:inputType="textPassword"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                tools:ignore="TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

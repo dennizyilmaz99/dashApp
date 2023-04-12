@@ -14,6 +14,9 @@
             app:destination="@id/getStartedFrag"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_homeFrag_to_loginFrag"
+            app:destination="@id/loginFrag" />
     </fragment>
     <fragment
         android:id="@+id/getStartedFrag"
@@ -56,6 +59,9 @@
             app:destination="@id/todoListFrag"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_dashboardFrag_to_settingsFrag2"
+            app:destination="@id/settingsFrag" />
     </fragment>
     <fragment
         android:id="@+id/todoListFrag"
@@ -63,9 +69,29 @@
         android:label="fragment_todo_list"
         tools:layout="@layout/fragment_todo_list" >
         <action
-            android:id="@+id/action_todoListFrag_to_dashboardFrag2"
+            android:id="@+id/action_todoListFrag_to_dashboardFrag"
             app:destination="@id/dashboardFrag"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right" />
     </fragment>
+    <fragment
+        android:id="@+id/loginFrag"
+        android:name="com.denniz.dashapp.LoginFrag"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFrag_to_homeFrag"
+            app:destination="@id/homeFrag" />
+        <action
+            android:id="@+id/action_loginFrag_to_dashboardFrag"
+            app:destination="@id/dashboardFrag" />
+    </fragment>
+    <dialog
+        android:id="@+id/settingsFrag"
+        android:name="com.denniz.dashapp.SettingsFrag"
+        android:label="SettingsFrag" >
+        <action
+            android:id="@+id/action_settingsFrag2_to_homeFrag"
+            app:destination="@id/homeFrag" />
+    </dialog>
 </navigation>

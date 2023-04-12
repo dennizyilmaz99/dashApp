@@ -13,47 +13,48 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
+import com.denniz.dashapp.databinding.FragmentLoginBinding
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 
 
-class GetStartedFrag : Fragment() {
-
+class LoginFrag : Fragment() {
 
     private lateinit var auth: FirebaseAuth
-    @SuppressLint("MissingInflatedId", "ResourceType")
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_get_started, container, false)
-        val signUpBtn = view.findViewById<Button>(R.id.loginBtn)
-        val editTextEmail = view.findViewById<EditText>(R.id.emailSignup)
-        val editTextPassword = view.findViewById<EditText>(R.id.passwordSignup)
-        val editTextConfirmPassword = view.findViewById<EditText>(R.id.editTextConfirmPassword)
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_login, container, false)
         val textInputLayoutEmail = view.findViewById<TextInputLayout>(R.id.textInputLoginEmail)
         val textInputLayoutPassword = view.findViewById<TextInputLayout>(R.id.textInputLoginPassword)
-        val textInputLayoutConfirmPassword = view.findViewById<TextInputLayout>(R.id.textInputLayoutConfirmPassword)
-        val displayEmail = editTextEmail.text.toString()
+        val backBtnLogin = view.findViewById<ImageButton>(R.id.backBtnLogin)
+        val logInBtn = view.findViewById<Button>(R.id.loginBtn)
+        val editTextEmail = view.findViewById<EditText>(R.id.emailLogin)
+        val editTextPassword = view.findViewById<EditText>(R.id.passwordLogin)
         auth = FirebaseAuth.getInstance()
 
-        signUpBtn.setOnClickListener() {
+        backBtnLogin.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_loginFrag_to_homeFrag)
+        }
+
+        logInBtn.setOnClickListener() {
             val email: String = editTextEmail.text.toString()
             val password: String = editTextPassword.text.toString()
-            val confirmPassword: String = editTextConfirmPassword.text.toString()
 
-            if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
-                if (password == confirmPassword){
-                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
+            if (email.isNotEmpty() && password.isNotEmpty()){
+                    auth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
                         if(it.isSuccessful){
-                            Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_getToKnowFrag)
+                            Navigation.findNavController(view).navigate(R.id.action_loginFrag_to_dashboardFrag)
                         } else {
                             Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
-                }
             }
-            if (email.isEmpty() && password.isEmpty() && confirmPassword.isEmpty()){
+            if (email.isEmpty() && password.isEmpty()){
                 val text = "No credentials. Please try again."
                 val colorStateList = ColorStateList(
                     arrayOf(
@@ -69,19 +70,8 @@ class GetStartedFrag : Fragment() {
                 textInputLayoutEmail.setBoxStrokeColorStateList(colorStateList)
                 textInputLayoutPassword.defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.colorError))
                 textInputLayoutPassword.setBoxStrokeColorStateList(colorStateList)
-                textInputLayoutConfirmPassword.defaultHintTextColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.colorError))
-                textInputLayoutConfirmPassword.setBoxStrokeColorStateList(colorStateList)
             }
         }
-
-        view.findViewById<ImageButton>(R.id.backBtnLogin).setOnClickListener() {
-            Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_homeFrag)
-        }
-
-        view.findViewById<Button>(R.id.button2).setOnClickListener() {
-            Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_getToKnowFrag)
-        }
-
         return view
     }
 }

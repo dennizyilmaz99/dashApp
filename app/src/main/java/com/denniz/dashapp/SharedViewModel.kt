@@ -8,4 +8,8 @@ class SharedViewModel: ViewModel() {
     fun greetingText(): String {
         return "Hello, $sharedData."
     }
+
+    fun dashboardHeader(): String {
+        return "$sharedData's Dashboard"
+    }
 }
