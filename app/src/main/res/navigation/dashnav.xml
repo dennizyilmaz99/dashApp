@@ -16,7 +16,9 @@
             app:exitAnim="@anim/to_left" />
         <action
             android:id="@+id/action_homeFrag_to_loginFrag"
-            app:destination="@id/loginFrag" />
+            app:destination="@id/loginFrag"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
     </fragment>
     <fragment
         android:id="@+id/getStartedFrag"
@@ -62,6 +64,16 @@
         <action
             android:id="@+id/action_dashboardFrag_to_settingsFrag2"
             app:destination="@id/settingsFrag" />
+        <action
+            android:id="@+id/action_dashboardFrag_to_homeFrag"
+            app:destination="@id/homeFrag"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_dashboardFrag_to_weatherFrag"
+            app:destination="@id/weatherFrag"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
     </fragment>
     <fragment
         android:id="@+id/todoListFrag"
@@ -81,10 +93,14 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFrag_to_homeFrag"
-            app:destination="@id/homeFrag" />
+            app:destination="@id/homeFrag"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_loginFrag_to_dashboardFrag"
-            app:destination="@id/dashboardFrag" />
+            app:destination="@id/dashboardFrag"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
     </fragment>
     <dialog
         android:id="@+id/settingsFrag"
@@ -92,6 +108,19 @@
         android:label="SettingsFrag" >
         <action
             android:id="@+id/action_settingsFrag2_to_homeFrag"
-            app:destination="@id/homeFrag" />
+            app:destination="@id/homeFrag"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
     </dialog>
+    <fragment
+        android:id="@+id/weatherFrag"
+        android:name="com.denniz.dashapp.WeatherFrag"
+        android:label="fragment_weather"
+        tools:layout="@layout/fragment_weather" >
+        <action
+            android:id="@+id/action_weatherFrag_to_dashboardFrag"
+            app:destination="@id/dashboardFrag"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
+    </fragment>
 </navigation>

@@ -28,6 +28,7 @@
             android:layout_width="325dp"
             android:layout_height="119dp"
             android:layout_marginStart="31dp"
+            android:layout_marginEnd="31dp"
             android:background="@drawable/rounded"
             android:elevation="30dp"
             app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
@@ -38,9 +39,11 @@
             app:layout_constraintVertical_bias="0.201" />
 
         <View
-            android:id="@+id/view4"
+            android:id="@+id/weatherView"
             android:layout_width="326dp"
             android:layout_height="167dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginEnd="31dp"
             android:background="@drawable/rounded"
             android:elevation="30dp"
             app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
@@ -54,6 +57,8 @@
             android:id="@+id/taskViewButton"
             android:layout_width="326dp"
             android:layout_height="89dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginEnd="31dp"
             android:background="@drawable/rounded"
             android:elevation="30dp"
             app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"

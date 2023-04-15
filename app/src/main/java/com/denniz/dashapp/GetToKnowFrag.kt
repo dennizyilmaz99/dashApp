@@ -48,7 +48,8 @@ class GetToKnowFrag : Fragment() {
                 Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
             } else {
                 sharedViewModel.sharedData = editTextName.text.toString()
-            Navigation.findNavController(view).navigate(R.id.action_getToKnowFrag_to_dashboardFrag)
+
+                Navigation.findNavController(view).navigate(R.id.action_getToKnowFrag_to_dashboardFrag)
             }
         }
 

@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TodoListFrag">
+    tools:context=".WeatherFrag">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
 
         <ImageButton
-            android:layout_marginTop="1dp"
-            android:id="@+id/backBtnTasks"
+            android:id="@+id/backBtnWeather"
             android:layout_width="22dp"
             android:layout_height="23dp"
+            android:layout_marginTop="1dp"
             android:background="#00FFFFFF"
             android:src="?attr/homeAsUpIndicator"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -28,42 +27,18 @@
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <TextView
-            android:id="@+id/textViewTask"
+            android:id="@+id/textViewWeather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/urbanist_bold"
-            android:text="Tasks"
+            android:text="Weather"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.06" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/todoListRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="599dp"
-        android:layout_marginTop="100dp"
-        android:backgroundTint="@color/white">
-
-    </androidx.recyclerview.widget.RecyclerView>
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/newTaskBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:text="NEW TASK"
-        android:textColor="@color/white"
-        app:backgroundTint="#8C52FF"
-        app:icon="@drawable/baseline_add_24"
-        app:iconPadding="5dp"
-        app:iconTint="@color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="20dp"
-        />
-
-</RelativeLayout>
+</FrameLayout>

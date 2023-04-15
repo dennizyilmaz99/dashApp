@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -19,7 +20,9 @@ import com.google.firebase.auth.FirebaseAuth
 
 class GetStartedFrag : Fragment() {
 
-
+    private val sharedViewModel: SharedViewModel by activityViewModels {
+        SharedViewModelFactory(requireActivity().application)
+    }
     private lateinit var auth: FirebaseAuth
     @SuppressLint("MissingInflatedId", "ResourceType")
     override fun onCreateView(
@@ -34,7 +37,6 @@ class GetStartedFrag : Fragment() {
         val textInputLayoutEmail = view.findViewById<TextInputLayout>(R.id.textInputLoginEmail)
         val textInputLayoutPassword = view.findViewById<TextInputLayout>(R.id.textInputLoginPassword)
         val textInputLayoutConfirmPassword = view.findViewById<TextInputLayout>(R.id.textInputLayoutConfirmPassword)
-        val displayEmail = editTextEmail.text.toString()
         auth = FirebaseAuth.getInstance()
 
         signUpBtn.setOnClickListener() {
@@ -46,6 +48,7 @@ class GetStartedFrag : Fragment() {
                 if (password == confirmPassword){
                     auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
                         if(it.isSuccessful){
+                            sharedViewModel.emailAccount = email
                             Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_getToKnowFrag)
                         } else {
                             Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()

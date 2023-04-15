@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -20,8 +22,8 @@ import com.google.firebase.auth.FirebaseAuth
 
 class SettingsFrag() : BottomSheetDialogFragment() {
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     private lateinit var auth: FirebaseAuth
-    private lateinit var navController: NavController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,11 +33,16 @@ class SettingsFrag() : BottomSheetDialogFragment() {
 
         // Rest of your code
         val logoutButton = view.findViewById<Button>(R.id.logoutButton)
+        val displayEmail = view.findViewById<TextView>(R.id.displayEmail)
         auth = FirebaseAuth.getInstance()
+
+        sharedViewModel.displayEmail().let{
+            displayEmail.text = it
+        }
 
         logoutButton.setOnClickListener{
             auth.signOut()
-            Navigation.findNavController(view).navigate(R.id.homeFrag)
+            Navigation.findNavController(view).navigate(R.id.action_settingsFrag2_to_homeFrag)
         }
     }
 

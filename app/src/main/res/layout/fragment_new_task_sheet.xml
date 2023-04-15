@@ -28,7 +28,7 @@
         android:layout_marginTop="30dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name"
+            android:id="@+id/textInputTodo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Play games...">
@@ -38,7 +38,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/logoutButton"
+        android:id="@+id/addNewTaskBtn"
         android:layout_width="100dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
