@@ -5,14 +5,14 @@ import androidx.room.*
 @Dao
 interface TodoDao {
     @Query("SELECT * FROM todo_list")
-    fun getAll(): List<TodoItem>
+    fun getAll(): List<Todo>
 
     @Insert
-    fun insert(item: TodoItem)
+    fun insert(item: Todo)
 
     @Delete
-    fun delete(item: TodoItem)
+    fun delete(item: Todo)
 
     @Update
-    fun update(item: TodoItem)
+    fun update(item: Todo)
 }

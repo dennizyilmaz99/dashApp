@@ -3,7 +3,6 @@ package com.denniz.dashapp
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +11,12 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class GetStartedFrag : Fragment() {
@@ -23,8 +24,9 @@ class GetStartedFrag : Fragment() {
     private val sharedViewModel: SharedViewModel by activityViewModels {
         SharedViewModelFactory(requireActivity().application)
     }
+
     private lateinit var auth: FirebaseAuth
-    @SuppressLint("MissingInflatedId", "ResourceType")
+    @SuppressLint("MissingInflatedId", "ResourceType", "SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,16 +41,16 @@ class GetStartedFrag : Fragment() {
         val textInputLayoutConfirmPassword = view.findViewById<TextInputLayout>(R.id.textInputLayoutConfirmPassword)
         auth = FirebaseAuth.getInstance()
 
-        signUpBtn.setOnClickListener() {
-            val email: String = editTextEmail.text.toString()
-            val password: String = editTextPassword.text.toString()
-            val confirmPassword: String = editTextConfirmPassword.text.toString()
-
+        signUpBtn.setOnClickListener {
+        val email: String = editTextEmail.text.toString()
+        val password: String = editTextPassword.text.toString()
+        val confirmPassword: String = editTextConfirmPassword.text.toString()
             if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
                 if (password == confirmPassword){
                     auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
                         if(it.isSuccessful){
-                            sharedViewModel.emailAccount = email
+                            sharedViewModel.emailAccountEmail = email
+                            sharedViewModel.emailAccountPassword = password
                             Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_getToKnowFrag)
                         } else {
                             Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -77,11 +79,11 @@ class GetStartedFrag : Fragment() {
             }
         }
 
-        view.findViewById<ImageButton>(R.id.backBtnLogin).setOnClickListener() {
+        view.findViewById<ImageButton>(R.id.backBtnLogin).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_homeFrag)
         }
 
-        view.findViewById<Button>(R.id.button2).setOnClickListener() {
+        view.findViewById<Button>(R.id.button2).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_getToKnowFrag)
         }
 

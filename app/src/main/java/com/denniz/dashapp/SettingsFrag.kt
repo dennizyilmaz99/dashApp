@@ -18,12 +18,13 @@ import com.denniz.dashapp.databinding.FragmentNewTaskSheetBinding
 import com.denniz.dashapp.databinding.FragmentSettingsBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class SettingsFrag() : BottomSheetDialogFragment() {
 
-    private val sharedViewModel: SharedViewModel by activityViewModels()
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,10 +36,20 @@ class SettingsFrag() : BottomSheetDialogFragment() {
         val logoutButton = view.findViewById<Button>(R.id.logoutButton)
         val displayEmail = view.findViewById<TextView>(R.id.displayEmail)
         auth = FirebaseAuth.getInstance()
-
-        sharedViewModel.displayEmail().let{
-            displayEmail.text = it
+        val user = auth.currentUser
+        val docRef = user!!.email?.let {
+            FirebaseFirestore.getInstance().collection("users").document(
+                it
+            )
         }
+        docRef!!.get()
+            .addOnSuccessListener { document ->
+                if (document.exists()){
+                    val field = document.getString("Email")
+                    displayEmail.text = "Email: $field"
+                }
+            }
+
 
         logoutButton.setOnClickListener{
             auth.signOut()

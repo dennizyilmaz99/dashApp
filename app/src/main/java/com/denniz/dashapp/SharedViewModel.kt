@@ -1,7 +1,6 @@
 package com.denniz.dashapp
 
 import android.content.Context
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 
 class SharedViewModel(private val context: Context) : ViewModel() {
@@ -12,9 +11,14 @@ class SharedViewModel(private val context: Context) : ViewModel() {
         get() = sharedPreferences.getString("sharedData", "") ?: ""
         set(value) = sharedPreferences.edit().putString("sharedData", value).apply()
 
-    var emailAccount: String
+    var emailAccountEmail: String
         get() = sharedPreferences.getString("emailAccount", "") ?: ""
         set(value) = sharedPreferences.edit().putString("emailAccount", value).apply()
+
+    var emailAccountPassword: String
+        get() = sharedPreferences.getString("emailAccountPassword", "") ?: ""
+        set(value) = sharedPreferences.edit().putString("emailAccountPassword", value).apply()
+
 
     fun greetingText(): String {
         return "Hello, $sharedData."
@@ -25,7 +29,7 @@ class SharedViewModel(private val context: Context) : ViewModel() {
     }
 
     fun displayEmail(): String {
-        return "Email: $emailAccount"
+        return "Email: $emailAccountEmail"
     }
 
 }
