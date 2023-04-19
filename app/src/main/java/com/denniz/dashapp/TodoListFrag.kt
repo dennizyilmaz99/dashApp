@@ -24,7 +24,7 @@ class TodoListFrag : Fragment() {
     private lateinit var binding: FragmentTodoListBinding
     private lateinit var bindingNewTaskSheetBinding: FragmentNewTaskSheetBinding
     private lateinit var bindingTodoItem: FragmentTodoItemBinding
-    private var todoDao: TodoDao? = null // make todoDao nullable
+    private var todoDao: TodoDao? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
@@ -33,7 +33,8 @@ class TodoListFrag : Fragment() {
         val database = Room.databaseBuilder(
             context.applicationContext,
             TodoDatabase::class.java, "todo_database"
-        ).build()
+        )   .fallbackToDestructiveMigration()
+            .build()
         todoDao = database.todoDao()
     }
     @SuppressLint("MissingInflatedId", "FragmentLiveDataObserve")
@@ -50,7 +51,6 @@ class TodoListFrag : Fragment() {
         val userID = auth.currentUser!!.uid
 
         coroutineScope.launch(Dispatchers.IO) {
-            // Initialize the todoDao if the fragment is attached to a context
             if (isAdded && todoDao == null) {
                 val database = Room.databaseBuilder(
                     requireContext(),
@@ -77,7 +77,7 @@ class TodoListFrag : Fragment() {
 
         binding.newTaskBtn.setOnClickListener {
             val newTaskSheet = NewTaskSheet.newInstance(todoDao!!, this)
-            newTaskSheet.setTodoDao(todoDao!!) // pass the todoDao to the NewTaskSheet
+            newTaskSheet.setTodoDao(todoDao!!)
             newTaskSheet.show(parentFragmentManager, "newTaskTag")
         }
         binding.backBtnTasks.setOnClickListener {

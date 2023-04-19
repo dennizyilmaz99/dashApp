@@ -52,7 +52,6 @@ class NewTaskSheet(private var todoListFrag: TodoListFrag) : BottomSheetDialogFr
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentNewTaskSheetBinding.inflate(inflater, container, false)
         bindingTodoList = FragmentTodoListBinding.inflate(inflater, container, false)
         auth = FirebaseAuth.getInstance()
