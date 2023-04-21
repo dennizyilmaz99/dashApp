@@ -77,7 +77,7 @@ class TodoListFrag : Fragment() {
 
         binding.newTaskBtn.setOnClickListener {
             val newTaskSheet = NewTaskSheet.newInstance(todoDao!!, this)
-            newTaskSheet.setTodoDao(todoDao!!)
+            newTaskSheet.setTodoDao(todoDao!!) // pass the todoDao to the NewTaskSheet
             newTaskSheet.show(parentFragmentManager, "newTaskTag")
         }
         binding.backBtnTasks.setOnClickListener {

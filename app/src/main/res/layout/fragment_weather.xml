@@ -73,17 +73,72 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.215" />
 
-        <TextView
-            android:id="@+id/temperatureTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <View
+            android:id="@+id/weatherViewWeatherFrag"
+            android:layout_width="326dp"
+            android:layout_height="167dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="236dp"
+            android:layout_marginEnd="31dp"
+            android:background="@drawable/rounded"
+            android:elevation="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.362" />
+            app:layout_constraintVertical_bias="0.687" />
+
+        <TextView
+            android:id="@+id/tempNumberWeatherFrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="252dp"
+            android:layout_marginEnd="210dp"
+            android:layout_marginBottom="315dp"
+            android:elevation="30dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="16°"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.054" />
+
+        <TextView
+            android:id="@+id/tempCityWeatherFrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="265dp"
+            android:layout_marginEnd="71dp"
+            android:layout_marginBottom="317dp"
+            android:elevation="30dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Stockholm"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.112"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.052" />
+
+        <ImageView
+            android:id="@+id/weatherIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="30dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.175"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.435" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

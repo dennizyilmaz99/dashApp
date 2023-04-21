@@ -39,7 +39,7 @@
             app:layout_constraintVertical_bias="0.201" />
 
         <View
-            android:id="@+id/weatherView"
+            android:id="@+id/weatherViewDashboardFrag"
             android:layout_width="326dp"
             android:layout_height="167dp"
             android:layout_marginStart="31dp"
@@ -69,7 +69,7 @@
             app:layout_constraintVertical_bias="0.418" />
 
         <TextView
-            android:id="@+id/tempNumber"
+            android:id="@+id/tempNumberDashboardFrag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="30dp"
@@ -84,7 +84,7 @@
             app:layout_constraintVertical_bias="0.63" />
 
         <TextView
-            android:id="@+id/tempCity"
+            android:id="@+id/tempCityDashboardFrag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="30dp"
@@ -188,6 +188,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.049" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
