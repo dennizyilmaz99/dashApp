@@ -92,9 +92,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="220dp"
             android:elevation="30dp"
+            android:hint="@string/email"
             android:paddingTop="30dp"
             android:paddingBottom="30dp"
-            android:hint="@string/email"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,10 +105,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                tools:ignore="TouchTargetSizeCheck"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"/>
+                android:paddingBottom="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                tools:ignore="TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -162,17 +162,31 @@
                 tools:ignore="TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/button2"
+        <ProgressBar
+            android:id="@+id/progressBarGetStartedFrag"
+            style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.786" />
+            app:layout_constraintVertical_bias="0.079" />
+
+        <ImageView
+            android:layout_marginTop="7dp"
+            android:id="@+id/imageViewGetStarted"
+            android:layout_width="88dp"
+            android:layout_height="58dp"
+            android:src="@drawable/page_dots_get_started"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.065" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

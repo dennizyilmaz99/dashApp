@@ -3,12 +3,15 @@ package com.denniz.dashapp
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -25,7 +28,20 @@ class GetStartedFrag : Fragment() {
         SharedViewModelFactory(requireActivity().application)
     }
 
+    private lateinit var progressBar: ProgressBar
+
     private lateinit var auth: FirebaseAuth
+
+    private fun showProgressBar() {
+        view?.findViewById<ProgressBar>(R.id.progressBarGetStartedFrag)?.apply {
+            visibility = View.VISIBLE
+        }
+    }
+    private fun hideProgressBar(){
+        view?.findViewById<ProgressBar>(R.id.progressBarGetStartedFrag)?.apply {
+            visibility = View.GONE
+        }
+    }
     @SuppressLint("MissingInflatedId", "ResourceType", "SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,12 +56,17 @@ class GetStartedFrag : Fragment() {
         val textInputLayoutPassword = view.findViewById<TextInputLayout>(R.id.textInputLoginPassword)
         val textInputLayoutConfirmPassword = view.findViewById<TextInputLayout>(R.id.textInputLayoutConfirmPassword)
         auth = FirebaseAuth.getInstance()
-
+        progressBar = view.findViewById(R.id.progressBarGetStartedFrag)
+        progressBar.visibility = View.GONE
         signUpBtn.setOnClickListener {
         val email: String = editTextEmail.text.toString()
         val password: String = editTextPassword.text.toString()
         val confirmPassword: String = editTextConfirmPassword.text.toString()
             if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
+                showProgressBar()
+                Handler().postDelayed({
+                    hideProgressBar()
+                }, 2000)
                 if (password == confirmPassword){
                     auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
                         if(it.isSuccessful){
@@ -81,10 +102,6 @@ class GetStartedFrag : Fragment() {
 
         view.findViewById<ImageButton>(R.id.backBtnLogin).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_homeFrag)
-        }
-
-        view.findViewById<Button>(R.id.button2).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_getStartedFrag_to_getToKnowFrag)
         }
 
         return view

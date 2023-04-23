@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -81,8 +82,9 @@ class TodoListFrag : Fragment() {
             newTaskSheet.show(parentFragmentManager, "newTaskTag")
         }
         binding.backBtnTasks.setOnClickListener {
-            Navigation.findNavController(binding.root)
-                .navigate(R.id.action_todoListFrag_to_dashboardFrag)
+            val bundle = bundleOf("fromFragment" to "weatherFrag")
+            Navigation.findNavController(binding.root).navigate(R.id.action_todoListFrag_to_dashboardFrag, bundle)
+
         }
 
         return binding.root

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardFrag">
+    tools:context=".DashboardFrag"
+    app:navGraph="@navigation/dashnav">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -40,18 +42,18 @@
 
         <View
             android:id="@+id/weatherViewDashboardFrag"
-            android:layout_width="326dp"
-            android:layout_height="167dp"
+            android:layout_width="332dp"
+            android:layout_height="125dp"
             android:layout_marginStart="31dp"
             android:layout_marginEnd="31dp"
             android:background="@drawable/rounded"
             android:elevation="30dp"
             app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.687" />
+            app:layout_constraintVertical_bias="0.64" />
 
         <View
             android:id="@+id/taskViewButton"
@@ -70,33 +72,59 @@
 
         <TextView
             android:id="@+id/tempNumberDashboardFrag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="94dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="57dp"
+            android:layout_marginTop="467dp"
+            android:layout_marginEnd="196dp"
+            android:layout_marginBottom="80dp"
             android:elevation="30dp"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="sans-serif-black"
             android:text="16°"
-            android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view_bg_color"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.175"
+            app:layout_constraintHorizontal_bias="0.086"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.63" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/tempCityDashboardFrag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="172dp"
+            android:layout_marginTop="476dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="101dp"
             android:elevation="30dp"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/urbanist_semibold"
             android:text="Stockholm"
-            android:textSize="23sp"
+            android:textSize="27sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.437"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.628" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/weatherHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="30dp"
+            android:fontFamily="@font/urbanist_extrabold"
+            android:text="Weather"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.188"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.579"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/taskHeader"
@@ -111,7 +139,8 @@
             app:layout_constraintHorizontal_bias="0.195"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.403" />
+            app:layout_constraintVertical_bias="0.403"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/taskSubHeader"
@@ -119,13 +148,14 @@
             android:layout_height="wrap_content"
             android:elevation="30dp"
             android:text="Here can you add and remove tasks for your day!"
-            android:textSize="10sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintHorizontal_bias="0.439"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.451" />
+            app:layout_constraintVertical_bias="0.453"
+            tools:ignore="HardcodedText,SmallSp" />
 
         <TextView
             android:id="@+id/displayName"
@@ -141,7 +171,8 @@
             app:layout_constraintHorizontal_bias="0.008"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.212" />
+            app:layout_constraintVertical_bias="0.212"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/dashboardMessage"
@@ -156,7 +187,8 @@
             app:layout_constraintHorizontal_bias="0.417"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.277" />
+            app:layout_constraintVertical_bias="0.277"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/dashboardHeader"
@@ -172,7 +204,8 @@
             app:layout_constraintHorizontal_bias="0.004"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.061" />
+            app:layout_constraintVertical_bias="0.061"
+            tools:ignore="HardcodedText" />
 
         <ImageButton
             android:id="@+id/settingsButton"
@@ -187,7 +220,25 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.049" />
+            app:layout_constraintVertical_bias="0.049"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck,UseAppTint" />
+
+        <TextView
+            android:id="@+id/feelsLikeTempDash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="172dp"
+            android:layout_marginTop="519dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginBottom="80dp"
+            android:elevation="30dp"
+            android:text="Feels like: "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

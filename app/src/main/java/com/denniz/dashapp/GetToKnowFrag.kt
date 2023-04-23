@@ -4,15 +4,13 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -25,6 +23,17 @@ class GetToKnowFrag : Fragment() {
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+    private lateinit var progressBar: ProgressBar
+    private fun showProgressBar() {
+        view?.findViewById<ProgressBar>(R.id.progressBarGetToKnowFrag)?.apply {
+            visibility = View.VISIBLE
+        }
+    }
+    private fun hideProgressBar(){
+        view?.findViewById<ProgressBar>(R.id.progressBarGetToKnowFrag)?.apply {
+            visibility = View.GONE
+        }
+    }
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,10 +47,18 @@ class GetToKnowFrag : Fragment() {
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
+        progressBar = view.findViewById(R.id.progressBarGetToKnowFrag)
+        progressBar.visibility = View.GONE
 
         submitBtn.setOnClickListener {
             val text = "Please type in your name."
             val name: String = editTextName.text.toString()
+            if (name.isNotEmpty()){
+                showProgressBar()
+                Handler().postDelayed({
+                    hideProgressBar()
+                }, 2000)
+            }
             if (name.isEmpty()) {
                 val colorStateList = ColorStateList(
                     arrayOf(
@@ -63,12 +80,6 @@ class GetToKnowFrag : Fragment() {
                 db.collection("users")
                     .document(sharedViewModel.emailAccountEmail)
                     .set(user)
-                    .addOnSuccessListener { documentReference ->
-                        Log.d(
-                            ContentValues.TAG,
-                            "DocumentSnapshot added with ID:"
-                        )
-                    }
                     .addOnFailureListener { e ->
                         Log.w(
                             ContentValues.TAG,
