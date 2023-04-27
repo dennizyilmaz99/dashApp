@@ -1,19 +1,15 @@
 package com.denniz.dashapp
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class TodoAdapter(private var items: List<Todo>, private val todoDao: TodoDao, private val todoListFrag: TodoListFrag):
     RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
@@ -32,6 +28,7 @@ class TodoAdapter(private var items: List<Todo>, private val todoDao: TodoDao, p
         return ViewHolder(view)
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         auth = FirebaseAuth.getInstance()
@@ -54,7 +51,7 @@ class TodoAdapter(private var items: List<Todo>, private val todoDao: TodoDao, p
             }
         }
     }
-    suspend fun deleteItem(todoDao: TodoDao, item: Todo) {
+    private suspend fun deleteItem(todoDao: TodoDao, item: Todo) {
         withContext(Dispatchers.IO) {
             todoDao.delete(item)
         }
@@ -64,6 +61,7 @@ class TodoAdapter(private var items: List<Todo>, private val todoDao: TodoDao, p
     override fun getItemCount(): Int {
         return items.size
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(newItems: List<Todo>){
         items = newItems
         notifyDataSetChanged()

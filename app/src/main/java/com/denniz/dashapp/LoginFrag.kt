@@ -15,7 +15,6 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
-import com.denniz.dashapp.databinding.FragmentLoginBinding
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 
@@ -52,11 +51,34 @@ class LoginFrag : Fragment() {
         progressBar = view.findViewById(R.id.progressBarLoginFrag)
         progressBar.visibility = View.GONE
 
+        textInputLayoutEmail.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    textInputLayoutEmail.setBoxStrokeColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.colorTurqoise
+                        )
+                    )
+                }
+            }
+        textInputLayoutPassword.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    textInputLayoutPassword.setBoxStrokeColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.colorTurqoise
+                        )
+                    )
+                }
+            }
+
         backBtnLogin.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.action_loginFrag_to_homeFrag)
         }
 
-        logInBtn.setOnClickListener() {
+        logInBtn.setOnClickListener {
             val email: String = editTextEmail.text.toString()
             val password: String = editTextPassword.text.toString()
 

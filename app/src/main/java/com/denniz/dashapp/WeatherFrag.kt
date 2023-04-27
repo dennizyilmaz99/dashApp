@@ -13,15 +13,11 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.core.view.isEmpty
+import androidx.core.view.isNotEmpty
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.SavedStateViewModelFactory
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
 import com.denniz.dashapp.databinding.FragmentWeatherBinding
 import com.google.gson.Gson
 import retrofit2.Call
@@ -46,7 +42,7 @@ class WeatherFrag : Fragment() {
         }
     }
 
-    private val weatherViewModel: WeatherViewModel by activityViewModels {
+    private val weatherViewModel: WeatherViewModel by viewModels() {
         WeatherViewModelFactory(requireActivity().application)
     }
     override fun onCreateView(
@@ -65,8 +61,21 @@ class WeatherFrag : Fragment() {
         val displayCityName = binding.tempCityWeatherFrag
         val searchCityInputLayout = binding.searchCityInputLayout
         val feelsLikeTemp = binding.feelslikeTemp
+        val textInputLayoutSearchCity = binding.searchCityInputLayout
         progressBar = binding.progressBarWeatherFrag
         progressBar.visibility = View.GONE
+
+        textInputLayoutSearchCity.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
+                        textInputLayoutSearchCity.setBoxStrokeColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                    R.color.colorTurqoise
+                                    )
+                                )
+                            }
+                        }
 
 
         binding.searchButton.setOnClickListener {

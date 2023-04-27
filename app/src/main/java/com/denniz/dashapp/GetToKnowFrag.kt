@@ -50,6 +50,18 @@ class GetToKnowFrag : Fragment() {
         progressBar = view.findViewById(R.id.progressBarGetToKnowFrag)
         progressBar.visibility = View.GONE
 
+        textInputLayoutName.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    textInputLayoutName.setBoxStrokeColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.colorTurqoise
+                        )
+                    )
+                }
+            }
+
         submitBtn.setOnClickListener {
             val text = "Please type in your name."
             val name: String = editTextName.text.toString()

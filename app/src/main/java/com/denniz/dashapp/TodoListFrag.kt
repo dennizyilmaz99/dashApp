@@ -42,14 +42,13 @@ class TodoListFrag : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTodoListBinding.inflate(inflater, container, false)
         bindingNewTaskSheetBinding = FragmentNewTaskSheetBinding.inflate(inflater, container, false)
         bindingTodoItem = FragmentTodoItemBinding.inflate(inflater, container, false)
         val coroutineScope = CoroutineScope(Dispatchers.Main)
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
-        val userID = auth.currentUser!!.uid
 
         coroutineScope.launch(Dispatchers.IO) {
             if (isAdded && todoDao == null) {
@@ -78,9 +77,10 @@ class TodoListFrag : Fragment() {
 
         binding.newTaskBtn.setOnClickListener {
             val newTaskSheet = NewTaskSheet.newInstance(todoDao!!, this)
-            newTaskSheet.setTodoDao(todoDao!!) // pass the todoDao to the NewTaskSheet
+            newTaskSheet.setTodoDao(todoDao!!)
             newTaskSheet.show(parentFragmentManager, "newTaskTag")
         }
+
         binding.backBtnTasks.setOnClickListener {
             val bundle = bundleOf("fromFragment" to "weatherFrag")
             Navigation.findNavController(binding.root).navigate(R.id.action_todoListFrag_to_dashboardFrag, bundle)

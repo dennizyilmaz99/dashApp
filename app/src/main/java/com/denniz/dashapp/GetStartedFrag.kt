@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 
 
 class GetStartedFrag : Fragment() {
@@ -58,6 +56,41 @@ class GetStartedFrag : Fragment() {
         auth = FirebaseAuth.getInstance()
         progressBar = view.findViewById(R.id.progressBarGetStartedFrag)
         progressBar.visibility = View.GONE
+
+        textInputLayoutEmail.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    textInputLayoutEmail.setBoxStrokeColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.colorTurqoise
+                        )
+                    )
+                }
+            }
+        textInputLayoutPassword.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    textInputLayoutPassword.setBoxStrokeColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.colorTurqoise
+                        )
+                    )
+                }
+            }
+        textInputLayoutConfirmPassword.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    textInputLayoutConfirmPassword.setBoxStrokeColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.colorTurqoise
+                        )
+                    )
+                }
+            }
+
         signUpBtn.setOnClickListener {
         val email: String = editTextEmail.text.toString()
         val password: String = editTextPassword.text.toString()

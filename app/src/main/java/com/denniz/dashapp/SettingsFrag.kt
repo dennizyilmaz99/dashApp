@@ -2,30 +2,23 @@ package com.denniz.dashapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import com.denniz.dashapp.databinding.FragmentNewTaskSheetBinding
-import com.denniz.dashapp.databinding.FragmentSettingsBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-class SettingsFrag() : BottomSheetDialogFragment() {
+class SettingsFrag : BottomSheetDialogFragment() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -53,7 +46,7 @@ class SettingsFrag() : BottomSheetDialogFragment() {
 
         logoutButton.setOnClickListener{
             auth.signOut()
-            Navigation.findNavController(view).navigate(R.id.action_settingsFrag2_to_homeFrag)
+            Navigation.findNavController(view).navigate(R.id.action_settingsFrag_to_homeFrag)
         }
     }
 

@@ -3,7 +3,7 @@ package com.denniz.dashapp
 import android.content.Context
 import androidx.lifecycle.ViewModel
 
-class SharedViewModel(private val context: Context) : ViewModel() {
+class SharedViewModel(context: Context) : ViewModel() {
 
     private val sharedPreferences = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
 

@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/dashapp_bg_signup">
+        android:background="@drawable/dashapp_turqoise_bg">
 
         <ProgressBar
             android:id="@+id/progressBarLoginFrag"
@@ -37,7 +37,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <View
-            android:id="@+id/view3"
+            android:id="@+id/userViewContainer"
             android:layout_width="326dp"
             android:layout_height="351dp"
             android:layout_marginStart="30dp"
@@ -71,7 +71,7 @@
             android:id="@+id/loginBtn"
             android:layout_width="130dp"
             android:layout_height="52dp"
-            android:backgroundTint="#8C52FF"
+            android:backgroundTint="#32a9f6"
             android:elevation="30dp"
             android:fontFamily="@font/urbanist_extrabold"
             android:stateListAnimator="@null"
@@ -111,7 +111,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:hintTextColor="#32a9f6"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailLogin"
@@ -137,7 +139,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:hintTextColor="#32a9f6">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordLogin"

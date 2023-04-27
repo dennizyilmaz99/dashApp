@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/dashapp_bg_signup">
+        android:background="@drawable/dashapp_turqoise_bg">
 
         <View
             android:id="@+id/view_bg_color"
@@ -27,7 +27,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <View
-            android:id="@+id/view3"
+            android:id="@+id/userViewContainer"
             android:layout_width="326dp"
             android:layout_height="381dp"
             android:layout_marginStart="30dp"
@@ -59,7 +59,7 @@
             android:id="@+id/loginBtn"
             android:layout_width="130dp"
             android:layout_height="52dp"
-            android:backgroundTint="#8C52FF"
+            android:backgroundTint="#32a9f6"
             android:elevation="30dp"
             android:fontFamily="@font/urbanist_extrabold"
             android:stateListAnimator="@null"
@@ -98,7 +98,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:hintTextColor="#32a9f6"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailSignup"
@@ -123,7 +125,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:hintTextColor="#32a9f6"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordSignup"
@@ -148,7 +152,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:hintTextColor="#32a9f6"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextConfirmPassword"
@@ -176,17 +182,17 @@
             app:layout_constraintVertical_bias="0.079" />
 
         <ImageView
-            android:layout_marginTop="7dp"
             android:id="@+id/imageViewGetStarted"
-            android:layout_width="88dp"
-            android:layout_height="58dp"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/page_dots_get_started"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.065" />
+            app:layout_constraintVertical_bias="0.076" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

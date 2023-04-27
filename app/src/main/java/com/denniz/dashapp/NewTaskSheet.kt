@@ -11,19 +11,14 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.denniz.dashapp.databinding.FragmentNewTaskSheetBinding
 import com.denniz.dashapp.databinding.FragmentTodoListBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.apphosting.datastore.testing.DatastoreTestTrace.FirestoreV1ActionOrBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 
 class NewTaskSheet(private var todoListFrag: TodoListFrag) : BottomSheetDialogFragment() {
@@ -47,17 +42,30 @@ class NewTaskSheet(private var todoListFrag: TodoListFrag) : BottomSheetDialogFr
         this.todoDao = todoDao
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNewTaskSheetBinding.inflate(inflater, container, false)
         bindingTodoList = FragmentTodoListBinding.inflate(inflater, container, false)
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         val textInputLayoutTodo = binding.textInputLayoutTodo
         val currentUser = auth.currentUser
+
+        textInputLayoutTodo.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    textInputLayoutTodo.setBoxStrokeColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.colorTurqoise
+                        )
+                    )
+                }
+            }
 
         val recyclerView: RecyclerView = bindingTodoList.todoListRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -79,7 +87,7 @@ class NewTaskSheet(private var todoListFrag: TodoListFrag) : BottomSheetDialogFr
                     user["userID"] = currentUser!!.uid
                     db.collection("task_items")
                         .add(user)
-                        .addOnSuccessListener { documentReference ->
+                        .addOnSuccessListener {
                             Log.d(
                                 ContentValues.TAG,
                                 "DocumentSnapshot added with ID:"
@@ -114,7 +122,7 @@ class NewTaskSheet(private var todoListFrag: TodoListFrag) : BottomSheetDialogFr
 
         return binding.root
     }
-    suspend fun insertItem(todoDao: TodoDao, item: Todo) {
+    private suspend fun insertItem(todoDao: TodoDao, item: Todo) {
         withContext(Dispatchers.IO) {
             todoDao.insert(item)
         }

@@ -5,24 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
-import com.denniz.dashapp.databinding.FragmentNewTaskSheetBinding
 import com.denniz.dashapp.databinding.FragmentTodoItemBinding
-import kotlin.concurrent.timerTask
 
 class TodoItemFrag : Fragment() {
 
     private lateinit var binding: FragmentTodoItemBinding
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentTodoItemBinding.inflate(inflater, container, false)
         val textView = binding.taskName
